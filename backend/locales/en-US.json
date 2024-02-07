@@ -185,7 +185,15 @@
             "plugin_updates_label": "Plugin updates available"
         },
         "other": {
-            "header": "Other"
+            "header": "Other",
+            "uninstall": {
+                "label": "Uninstall Decky",
+                "short_label": "Uninstall",
+                "description": "We are sorry to see you go! If you are considering uninstalling because you are having issues, please consider opening an issue or joining our Discord so we can help you and other users.",
+                "pwd_input": "Please, enter your password:",
+                "pwd_confirm": "Confirm",
+                "pwd_cancel": "Cancel"
+            }
         },
         "updates": {
             "header": "Updates"
