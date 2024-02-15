@@ -15,6 +15,14 @@ from aiohttp import ClientSession
 
 from . import helpers
 from .injector import get_gamepadui_tab
+from .localplatform import (
+    ON_LINUX,
+    ON_WINDOWS,
+    chmod,
+    get_keep_systemd_service,
+    get_selinux,
+    service_restart,
+)
 from .settings import SettingsManager
 if TYPE_CHECKING:
     from .main import PluginManager
