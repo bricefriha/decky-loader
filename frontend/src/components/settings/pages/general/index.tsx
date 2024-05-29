@@ -14,6 +14,16 @@ export default function GeneralSettings({
   isDeveloper: boolean;
   setIsDeveloper: (val: boolean) => void;
 }) {
+  const openPasswordInput = async () => {
+    await window.DeckyPluginLoader.openTextInput(
+      t('SettingsGeneralIndex.other.uninstall.pwd_input'),
+      t('SettingsGeneralIndex.other.uninstall.pwd_confirm'),
+      t('SettingsGeneralIndex.other.uninstall.pwd_cancel'),
+      (pwd: string) => {
+        console.log(pwd);
+      },
+    );
+  };
   const { versionInfo } = useDeckyState();
   const { t } = useTranslation();
 
@@ -54,11 +64,7 @@ export default function GeneralSettings({
           <div style={{ color: 'var(--gpSystemLighterGrey)' }}>
             {t('SettingsGeneralIndex.other.uninstall.description')}
           </div>
-          <DialogButton
-            onClick={() => {
-              console.log('uninstall button pressed');
-            }}
-          >
+          <DialogButton onClick={openPasswordInput}>
             {t('SettingsGeneralIndex.other.uninstall.pwd_confirm')}
           </DialogButton>
         </Field>

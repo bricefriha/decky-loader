@@ -1,4 +1,5 @@
 import {
+  Button,
   ModalRoot,
   PanelSection,
   PanelSectionRow,
