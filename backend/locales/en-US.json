@@ -197,13 +197,6 @@
         },
         "updates": {
             "header": "Updates"
-        },
-        "uninstall": {
-            "label": "Uninstall Decky",
-            "description": "We are sorry to see you go! If you are considering uninstalling because you are having issues, please consider opening an issue or joining our Discord so we can help you and other users.",
-            "pwd_input": "Please enter your password:",
-            "pwd_confirm": "uninstall",
-            "pwd_cancel": "cancel"
         }
     },
     "SettingsIndex": {
