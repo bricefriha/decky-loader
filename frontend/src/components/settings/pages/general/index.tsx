@@ -51,10 +51,14 @@ export default function GeneralSettings({
       </DialogControlsSection>
       <DialogControlsSection>
         <Field label={t('SettingsGeneralIndex.other.uninstall.label')}>
-          <div style={{ color: 'var(--gpSystemLighterGrey)' }}>{t('SettingsGeneralIndex.other.uninstall.description')}</div>
-          <DialogButton onClick={() => {
-            console.log("uninstall button pressed")
-          }}>
+          <div style={{ color: 'var(--gpSystemLighterGrey)' }}>
+            {t('SettingsGeneralIndex.other.uninstall.description')}
+          </div>
+          <DialogButton
+            onClick={() => {
+              console.log('uninstall button pressed');
+            }}
+          >
             {t('SettingsGeneralIndex.other.uninstall.pwd_confirm')}
           </DialogButton>
         </Field>
