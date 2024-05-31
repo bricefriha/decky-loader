@@ -60,14 +60,12 @@ export default function GeneralSettings({
         </Field>
       </DialogControlsSection>
       <DialogControlsSection>
-        <Field label={t('SettingsGeneralIndex.other.uninstall.label')}>
-          <div style={{ color: 'var(--gpSystemLighterGrey)' }}>
-            {t('SettingsGeneralIndex.other.uninstall.description')}
-          </div>
+        <DialogControlsSectionHeader>{t('SettingsGeneralIndex.other.uninstall.label')}</DialogControlsSectionHeader>
+        <DialogControlsSection>
           <DialogButton onClick={openPasswordInput}>
-            {t('SettingsGeneralIndex.other.uninstall.pwd_confirm')}
+            {t('SettingsGeneralIndex.other.uninstall.short_label')}
           </DialogButton>
-        </Field>
+        </DialogControlsSection>
       </DialogControlsSection>
     </DialogBody>
   );
