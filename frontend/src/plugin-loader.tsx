@@ -1,5 +1,4 @@
 import {
-  Button,
   ModalRoot,
   PanelSection,
   PanelSectionRow,
@@ -101,7 +100,11 @@ class PluginLoader extends Logger {
 
     const TabBadge = () => {
       const { updates, hasLoaderUpdate } = useDeckyState();
-      return <NotificationBadge show={(updates && updates.size > 0) || hasLoaderUpdate} />;
+      return (
+        <NotificationBadge
+          show={(updates && updates.size > 0) || hasLoaderUpdate}
+        />
+      );
     };
 
     this.tabsHook.add({
@@ -120,12 +123,12 @@ class PluginLoader extends Logger {
       ),
     });
 
-    this.routerHook.addRoute('/decky/store', () => (
+    this.routerHook.addRoute("/decky/store", () => (
       <WithSuspense route={true}>
         <StorePage />
       </WithSuspense>
     ));
-    this.routerHook.addRoute('/decky/settings', () => {
+    this.routerHook.addRoute("/decky/settings", () => {
       return (
         <DeckyStateContextProvider deckyState={this.deckyState}>
           <WithSuspense route={true}>
@@ -186,9 +189,12 @@ class PluginLoader extends Logger {
 
   public async notifyUpdates() {
     const versionInfo = await this.updateVersion();
-    if (versionInfo?.remote && versionInfo?.remote?.tag_name != versionInfo?.current) {
+    if (
+      versionInfo?.remote &&
+      versionInfo?.remote?.tag_name != versionInfo?.current
+    ) {
       this.deckyState.setHasLoaderUpdate(true);
-      if (this.notificationService.shouldNotify('deckyUpdates')) {
+      if (this.notificationService.shouldNotify("deckyUpdates")) {
         this.toaster.toast({
           title: <TranslationHelper transClass={TranslationClass.PLUGIN_LOADER} transText="decky_title" />,
           body: (
@@ -198,7 +204,7 @@ class PluginLoader extends Logger {
               i18nArgs={{ tag_name: versionInfo?.remote?.tag_name }}
             />
           ),
-          onClick: () => Router.Navigate('/decky/settings'),
+          onClick: () => Router.Navigate("/decky/settings"),
         });
       }
     }
@@ -216,7 +222,10 @@ class PluginLoader extends Logger {
 
   public async notifyPluginUpdates() {
     const updates = await this.checkPluginUpdates();
-    if (updates?.size > 0 && this.notificationService.shouldNotify('pluginUpdates')) {
+    if (
+      updates?.size > 0 &&
+      this.notificationService.shouldNotify("pluginUpdates")
+    ) {
       this.toaster.toast({
         title: <TranslationHelper transClass={TranslationClass.PLUGIN_LOADER} transText="decky_title" />,
         body: (
@@ -226,7 +235,7 @@ class PluginLoader extends Logger {
             i18nArgs={{ count: updates.size }}
           />
         ),
-        onClick: () => Router.Navigate('/decky/settings/plugins'),
+        onClick: () => Router.Navigate("/decky/settings/plugins"),
       });
     }
   }
@@ -252,7 +261,12 @@ class PluginLoader extends Logger {
 
   public addMultiplePluginsInstallPrompt(
     request_id: string,
-    requests: { name: string; version: string; hash: string; install_type: InstallType }[],
+    requests: {
+      name: string;
+      version: string;
+      hash: string;
+      install_type: InstallType;
+    }[],
   ) {
     showModal(
       <MultiplePluginsInstallModal
@@ -263,8 +277,20 @@ class PluginLoader extends Logger {
     );
   }
 
-  public uninstallPlugin(name: string, title: string, buttonText: string, description: string) {
-    showModal(<PluginUninstallModal name={name} title={title} buttonText={buttonText} description={description} />);
+  public uninstallPlugin(
+    name: string,
+    title: string,
+    buttonText: string,
+    description: string,
+  ) {
+    showModal(
+      <PluginUninstallModal
+        name={name}
+        title={title}
+        buttonText={buttonText}
+        description={description}
+      />,
+    );
   }
 
   public hasPlugin(name: string) {
@@ -279,8 +305,8 @@ class PluginLoader extends Logger {
   }
 
   public init() {
-    getSetting('developer.enabled', false).then((val) => {
-      if (val) import('./developer').then((developer) => developer.startup());
+    getSetting("developer.enabled", false).then((val) => {
+      if (val) import("./developer").then((developer) => developer.startup());
     });
 
     // Grab and set plugin order
@@ -295,8 +321,8 @@ class PluginLoader extends Logger {
   }
 
   public deinit() {
-    this.routerHook.removeRoute('/decky/store');
-    this.routerHook.removeRoute('/decky/settings');
+    this.routerHook.removeRoute("/decky/store");
+    this.routerHook.removeRoute("/decky/settings");
     deinitSteamFixes();
     deinitFilepickerPatches();
     this.routerHook.deinit();
@@ -474,7 +500,7 @@ class PluginLoader extends Logger {
         // Purposely outside of the FilePicker component as lazy-loaded ModalRoots don't focus correctly
         <ModalRoot
           onCancel={() => {
-            reject('User canceled');
+            reject("User canceled");
             closeModal?.();
           }}
         >
