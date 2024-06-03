@@ -1,12 +1,5 @@
-import { DialogBody, DialogControlsSection, DialogControlsSectionHeader, Field, Toggle } from '@decky/ui';
-import { useTranslation } from 'react-i18next';
-
-import { useDeckyState } from "../../../DeckyState";
-import BranchSelect from "./BranchSelect";
-import NotificationSettings from "./NotificationSettings";
-import StoreSelect from "./StoreSelect";
-import UpdaterSettings from "./Updater";
-//import UninstallModal from '../../../../components/UninstallModal';
+import { DialogBody, DialogButton, DialogControlsSection, DialogControlsSectionHeader, Field, Toggle } from '@decky/ui';
+import { showModal } from 'decky-frontend-lib';
 import { lazy } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -55,7 +48,7 @@ export default function GeneralSettings({
         <Field label={t('SettingsGeneralIndex.developer_mode.label')}>
           <Toggle
             value={isDeveloper}
-            onChange={(toggleValue) => {
+            onChange={(toggleValue: boolean) => {
               setIsDeveloper(toggleValue);
             }}
           />
